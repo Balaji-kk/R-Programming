@@ -1,0 +1,450 @@
+---
+title: "Homework"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+####                              IE 6200 HW 2
+
+### Conditional probability
+
+#### Exercise 1. 
+# Suppose a box contains 300 good light bulbs, 60 defective light bulbs and 150 somewhat defective light bulbs. If one of the bulbs from the box is used and it does notimmediately fail to work, what is the probability that the bulb is a good bulb (meaning that it is not somewhat defective)?
+
+## Solution
+
+
+$$P(G|S)= \frac{P(G \cup S)} {P(S)}$$
+
+# let S be the total number of bublbs
+# let SD somewhat defective bulbs
+# let D be defective bulbs
+# let  G good bulb 
+# Let T probability of getting good bulb that does not fail to work immediately
+
+```{r}
+S<-510
+SD<-150
+D<-60
+G<-300
+T<- (G+SD)/S
+T
+```
+
+## Exercise 2. 
+
+## DISCLAIMER I MADE THIS EXAMPLE UP - NAMES ARE REAL BUTFIGURES ARE USED ONLY TO ILLUSTRATE THE APPLICATION!BMW purchases car batteries from two different suppliers. A123Systems provides 60% of thebatteries and E-One Moli Energy provides 40% of the batteries. If 6% of all A123Systemsbatteries are defective and 3% from E-One Moli Energy are defective.
+
+## 1. Draw the sample space and event diagram. Label all relevant events in the diagram.
+
+![SampleSpace](sample space.png)
+![Event Diagram](event diagram.png)
+
+
+
+## 2. Label the diagram with computed probabilities for all relevant events including:
+
+```{r}
+# Let total be S
+S<-100
+# let A be A213 system
+A<-60
+# the probability of getting a213 system is
+PA<-A/S
+# let a be defective battery of A213 system
+a<-6
+# a)The probability a battery is defective given it is supplied by A123Systems.
+pa<-a/A
+pa
+# Let B be E-one moli energy
+B<-40
+# probability of getting E-one moli energy battery
+PB<-B/S
+# let b be defective of E- one moli energy
+b<-3
+# b)The probability a battery is defective given it is supplied by E-One Moli energy
+Pb<-b/B
+Pb
+# the overall defectiveness be O
+O<-9
+# the probability of getting defective battery be D
+D<-O/S
+# c)  The probability a battery is defective and it is supplied by A123Systems
+P1<-D*PA
+P1
+# d)  The probability a battery is defective and it is supplied by E-One Molienergy.
+P2<-D*PB
+P2
+
+# 3) Find the probability that a randomly selected battery is not defective
+L<-1-D
+L
+
+```
+## Exercise 3.  
+## Montgomery 2-49. You must show your work and all steps to receive fullcredit. If P(A) = 0.3, P(B) = 0.2, and P(A∩B) = 0.1 determine the following probabilities
+
+1) $P(A')$
+
+$$P{(A')}=1-P(A)$$
+
+
+```{r}
+# let A be the probability of getting 
+PA<-0.3
+A<-1-PA
+A
+```
+
+2. $P(A\cup B)$
+
+$$P(A\cup B)= P(A)+P(B)-P(A\cap{B})$$
+
+```{r}
+# let B be the probability of getting 
+PB<-0.2
+Pa<-0.3
+PA_B<-0.1
+B<-(Pa+PB)-PA_B
+B
+```
+ 
+3.$(P{A'}\cap{B})$
+
+$$(P{A'}\cap{B})=P(B)-P(A \cap B)$$
+
+```{r}
+# Let C be the probability 
+PA_B<-0.1
+C<-PB-PA_B
+C
+```
+
+4.$(P{A}\cap{B'})$
+
+# Let D be the probability 
+
+$$(P{A}\cap{B'})=P(A)-P(A \cap B)$$
+
+```{r}
+
+D<-PA-PA_B
+D
+```
+
+
+5. $P({A'}\cup{B})$
+
+$$P[({A}\cup{B})']=1-P(A\cup{B})$$
+
+```{r}
+# Let E be the probability of getting 
+P_AB<-PA+PB
+E<- 1-B
+E
+```
+6.$P({A'}\cup{B})$
+
+$$P({A'}\cup{B})=P(B)+P(A')-P(A'\cap{B})$$
+
+```{r}
+# Let F be the probability of getting 
+F<- PB+A-C
+F
+
+```
+
+## Exercise 4.
+##  You must provide a complete, well written solution.If A, B, and C are mutually exclusive events, is it possible for P(A) = 0.3, P(B) = 0.4, andP(C) = 0.5? Why or why not?
+
+# solution
+
+
+ According to probability 0<=P(any event)<=1
+
+$$P(A)+P(B)+P(C)=0.3+0.5+0.4=1.2>1$$
+
+ Hence the event P(A),P(B),P(C) cannot be mutually exclusive.
+
+
+## Exercise 6. 
+## You must show your work and all steps to receive fullcredit. Disks of polycarbonate plastic from a supplier are analyzed for scratch and shockresistance. The results from 100 disks are summarized as follows.
+
+# solution
+
+```{r}
+# Let A be high shock resistance
+A<-86
+
+# let B be high scratch resistance
+B<-79
+
+```
+
+
+1.P(A)
+```{r}
+PA<-86/100
+PA
+```
+
+
+2.P(B)
+```{r}
+PB<-79/100
+PB
+```
+
+3.P(A|B)
+
+$$P(A|B)=\frac{P(A\cap{B})}{P(B)}$$
+
+Let AB be the probability of $P(A|B)$
+```{r}
+A_B<-70/100
+A_B
+AB<-A_B/PB
+AB
+```
+
+4.P(B|A)
+
+$$P(B|A)=\frac{P(B\cap{A})}{P(A)}$$
+
+Let BA be the probability of $P(B|A)$
+```{r}
+BA<-A_B/PA
+BA
+```
+
+## Exercise 7 
+## You must show your work and all steps to receive fullcredit. A batch of 500 containers for frozen orange juie contains 5 that are defective. Two are selected, at random, without replacement from the batch
+
+## solution
+
+```{r}
+
+# 1. What is the probability that the second one selected is defective given that the first one was defective?
+ 
+# let A be the batch of containers
+A<-500
+
+# Let B be defective
+B<-5
+
+# let PB be the the probability of getting second one defective given first one is defective
+
+PB<-4/499
+PB
+
+# 2. What is the probability that both are defective?
+
+# let PD be the probability of getting 1 defective
+
+PD<-5/500
+PD
+
+# The probability of getting both defective is
+PE<-PD+PB
+PE
+
+# 3. What is the probability that both are acceptable?
+
+# let PC be the probability of getting which are acceptable
+PC<-(495/500)*(494/499)
+PC
+```
+
+## Exercise 8. 
+## You must provide a complete, well written solutionand include the image of your Venn diagram. You can use powerpoint (lucid chart, paintor any other program) to easily draw Venn diagrams and then save it as an image that youload into R Markdown or Overleaf. If P(A|B) = 1 must A = B? Draw a Venn diagram to explain your answer
+
+
+$$P(A|B)=\frac{P(A\cap{B})}{P(B)}$$
+Given
+
+$$P(A|B)=1$$
+
+So
+
+$$\frac{P(A\cap{B})}{P(B)}=1$$
+$$P(A\cap{B})=P(B)$$
+
+
+
+![sample space](kk.png)
+
+ 
+
+
+## Exercise 9.
+## You must show your work and all steps to receivefull credit. Incoming calls to a customer service center are classified as complaints (75% ofthe calls) or requests for information (25% of the calls). Of the complaints, 40% deal withcomputer equipment that does not respond and 57% deal with incomplete software installation and in the remaining 3% of complaints the user has improperly followed the installationinstructions. The requests for information are evenly divided on technical questions (50%)and requests to purchase more products (50%).
+
+## 1. What is the probability that an incoming call to the service center will be from a customer who has not followed installation instructions properly?
+
+```{r}
+# Let S be total number of complaints
+S<-100
+
+# Let complaint be A
+A<-75
+
+# probability of complaint be PA
+PA<-75/100
+
+# Let information request be B
+B<-25
+
+# probability of information request be
+PB<-25/100
+
+# getting call that does not followed instruction be
+I<-75*(3/100)
+
+# The probability of getting call that didn't follow instructions
+PI<-I/100
+PI
+
+## 2. Find the probability that an incoming call is a request for purchasing more products.
+
+# Let the incoming call for purchase is
+P<-(25*50)/100
+
+# The probability of incoming call for purchasing is
+PP<-P/100
+PP
+```
+
+## Exercise 10
+## You must show your work and all steps to receivefull credit. A batch of 25 injection molded parts contains 5 that have suffered excessive shrinkage.
+
+
+```{r}
+
+## 1. If two parts are selected at random and without replacement, what is the probability that the second part selected is one with excessive shrinkage?
+
+# Let the A be the batch of injection
+A<-25
+# PC be the probability of getting non shrinked one
+PC<-20/25
+# Let B  getting Shrinked one
+B<-5
+# probability of getting shrinked one
+PB<-5/25
+# The probability of getting  second part selected is excessive shrinkage on second pick
+# Let first draw be
+PD<-(PC*PB)
+# let second draw be
+PC1<-19/24
+PB1<-4/24
+# the second draw is
+PD1<-PD+(PC1*PB1)
+PD1
+```
+## 2. If three parts are selected at random and without replacement, what is the probability that the third part selected is one with excessive shrinkage?
+```{r}
+
+# The probability of getting third part with excessive shrinkage
+
+# Let the third draw be
+PC2<-18/23
+PB2<-3/23
+# the third draw is
+PD2<-PD1+(PC2)*(PB2)
+PD2
+```
+
+## Exercise 11. 
+## You must show your work and all steps to receivefull credit. The probability that a lab specimen contains high levels of contamination is 0.10.Five samples are checked and the samples are independent.
+```{r}
+
+
+## 1. What is the probability that none contains high levels of contamination?
+
+# let PB be the probability of getting a contaminated one
+PB<-0.10
+PB
+```
+
+# let PA be the probability of getting a sample without contamination
+$P(A)<-1-P(A)$
+
+```{r}
+
+PA<-1-0.10
+PA
+
+# since we have five samples the probability of getting non contaminated one is
+PC<-(0.9^5)
+PC
+
+# 2. What is the probability that exactly one contains high levels of contamination?
+
+# The probability of getting atleast one contamination 
+
+PB<-0.9*0.9*0.9*0.9*0.1
+PB
+
+# 3. What is the probability that at least one contains high levels of contamination?
+# Let C be the probability of getting atleast one contamination
+PC<-1-PC
+PC
+```
+
+##  Exercise 12.
+## You must show your work and all steps to receivefull credit. Customers are used to evaluate preliminary product designs. In the past,95%of highly successful products received good reviews, 60% of moderately successful productsreceived good reviews, and 10% of poor products received good reviews. In addition, 40%of products have been highly successful, 35% have been moderately successful and 25% havebeen poor products.
+
+# 1. What is the probability that a product attains a good review?
+```{r}
+
+# Let P_HG be highly sucessfull and good products
+P_HG<-95/100
+P_HG
+# Let P_MG be moderately sucessfull and good products
+P_MG<-60/100
+# Let P_PG be poor and good products
+P_PG<-10/100
+P_PG
+# let P_H be highly sucessful products
+P_H<-40/100
+P_H
+# Let P_M be moderately sucessful
+P_M<-35/100
+P_M
+# Let P_P be poor products
+P_P<-25/100
+P_P
+
+# Let G be the product of getting good review
+G<-(P_HG)*(P_H)+(P_MG)*(P_M)+(P_PG)*P_P
+G
+```
+# 2. If a new design attains a good review, what is the probability that it will be a highly successful product?
+```{r}
+
+
+# Let P_HS be highly sucessfull
+P_HS<-(P_HG)*(P_H)/G
+P_HS
+```
+
+# 3. If a product does not attain a good review, what is the probability that it will be a highly successful product?
+
+```{r}
+
+
+# Let g be the probability of not getting good review
+g<-1-G
+g
+# let P_G be the probability of getting not a good review and highly sucessfull
+P_G<-(1-P_HG)*(P_H)/g
+P_G
+
+```
+
