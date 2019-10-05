@@ -1,0 +1,100 @@
+---
+title: "Assignment-1"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Exercise 2.
+
+```{r  include=TRUE}
+ 
+
+# Toss a fair coin 5 times and display the results as 0's or 1's.
+
+set.seed(0)
+rbinom(5,1,0.5)
+```
+
+## Exercise 3.
+```{r  include=TRUE}
+
+# Toss a fair coin 5 times and display the results as "True" or "False".
+
+set.seed(0)
+rbinom(5,1,0.5)==1
+```
+## Exercise 4. 
+```{r  include=TRUE}
+
+#Let's say that a 1 or a True is a head. Display only the tosses that resulted in a head.
+
+set.seed(0)
+head<-(1:10)[rbinom(10,1,0.5)==1]
+head
+```
+## Exercise 5.
+
+```{r  include=TRUE}
+#Assign the tosses that resulted in heads to a variable. Name the variable.something that is meaningful and descriptive.
+
+
+set.seed(0)
+head<-(1:10)[rbinom(10,1,0.5)==1]
+cat("The tosses that resulted in head:",head )
+```
+## Exercise 6. 
+
+```{r  include=TRUE}
+# Write a function that takes the number of tosses and a probability of heads as the input and returns the tosses that resulted in a head as the output. Name the function something that is meaningful and descriptive.
+
+set.seed(0)
+heads<-function(n,p)(1:n)[rbinom(n,1,p)==1]
+c<-heads(5,0.5)
+cat('tosses that resulted in head are:',c)
+```
+
+## Exercise 7. 
+```{r  include=TRUE}
+
+## Write a function that takes the number of tosses and a probability of heads as the input and returns proportion of tosses that resulted in a head.
+
+set.seed(0)
+heads<-function(n,p)(1:n)[rbinom(n,1,p)==1]
+heads(5,0.5)
+```
+
+
+## Exercise 8. 
+```{r  include=TRUE}
+
+# Compute the sum of integers from 1 to 100.
+
+
+sum_of_integers= sum(1:100)
+sum_of_integers
+```
+## Exercise 9. 
+```{r  include=TRUE}
+
+# Compute the sum of squares of the numbers from 1 to 25.
+
+
+numbers=1:25
+squares=numbers^2
+sum_of_squares=sum(squares)
+sum_of_squares
+```
+
+## Exercise 10.
+```{r  include=TRUE}
+
+# Display the numbers from -4 to 4 (inclusive) in increments of 0.1.
+
+
+display_of_numbers=seq(-4,4,0.1)
+display_of_numbers
+```
